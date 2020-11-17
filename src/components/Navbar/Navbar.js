@@ -8,7 +8,7 @@ import classes from './Navbar.css'
 const Navigation = (props) => {
 
 	return(
-	<Navbar collapseOnSelect expand="lg" style={{color:"blue"}} variant="dark">
+	<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" >
   <Navbar.Brand href="#home" ><Logo/></Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
@@ -28,8 +28,8 @@ const Navigation = (props) => {
     </Nav>
 
     <Nav>
-      <Nav.Item >User Name</Nav.Item>
-		 	<Nav.Item >Photo</Nav.Item>
+      <Nav.Item ><Nav.Link>User Name</Nav.Link></Nav.Item>
+		 	<Nav.Item ><Nav.Link>Photo</Nav.Link></Nav.Item>
     </Nav>
   </Navbar.Collapse>
 </Navbar>
