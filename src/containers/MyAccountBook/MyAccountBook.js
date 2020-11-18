@@ -6,11 +6,11 @@ const MyAccountBook = () =>{
 	
 	return(
 		// <Container fluid className="h-92">
-		<Container fluid className="h-100">
+		<Container fluid className="h-100" style={{overflow: "scroll"}}>
 			<Navigation/>
 			<Row className="h-100">
-				<Col className="bg-primary" lg="3" >
-				
+				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
+				menu
 				</Col>
 
 				<Col className="bg-light py-2" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>

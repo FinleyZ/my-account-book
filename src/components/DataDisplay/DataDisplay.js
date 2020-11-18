@@ -3,15 +3,15 @@ import { Container, Row, Col } from 'react-bootstrap'
 
 export const DataDisplay = () => {
 	return (
-		<Container fluid className="h-100">
-			<Row className="h-50 bg-success">
-				<Col className="bg-success ">this is Calander</Col>
-				<Col className="bg-warning ">this is Transactions </Col>
+		<Container fluid className="h-100" style={{overflow: "scroll"}}>
+			<Row className="h-50 bg-success " lg="12">
+				<Col className="bg-success" lg="6" md="6" style={{minHeight: "350px"}}>this is Calander</Col>
+				<Col className="bg-warning" lg="6" md="6" style={{minHeight: "350px"}}>this is Transactions </Col>
 			</Row>
 			
-			<Row className="h-50">
-				<Col className="bg-info">this is Data</Col>
-				<Col className="bg-secondary">this is Graph</Col>
+			<Row className="h-50" lg="12">
+				<Col className="bg-info" lg="6" md="6" style={{minHeight: "350px"}}>this is Data</Col>
+				<Col className="bg-secondary" lg="6" md="6" style={{minHeight: "350px"}}>this is Graph</Col>
 			</Row>
 		</Container>
 
