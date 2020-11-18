@@ -26,12 +26,12 @@ const pieChart = (props) => {
         );
         }
     return (
-        <PieChart width={120} height={120}>
+        <PieChart width={100} height={100}>
             <Pie
             data={data}
             startAngle={0}
             labelLine={false}
-            innerRadius={30}
+            innerRadius={25}
             // label={renderCustomizedLabel}
             fill="#8884d8"
             dataKey="value"
@@ -40,7 +40,7 @@ const pieChart = (props) => {
                 data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
             }
             </Pie>
-            <text x={62} y={52} dy={8}
+            <text x={52} y={44} dy={8}
                 textAnchor="middle"
                 dominantBaseline="middle"
                 fill={props.color}
