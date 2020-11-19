@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-
 import { Container, Row, Col, Modal, InputGroup, FormControl}from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -56,7 +55,8 @@ const AddSpending = (props) => {
     return(
         <>
             <Button 
-                className="mt-3 mb-3" 
+                className="mt-3 mb-3 w-100 bg-spending" 
+                
                 variant={props.btnColor} 
                 style={{
                     borderRadius: "1.5rem 0 1.5rem 1.5rem",
