@@ -3,7 +3,7 @@ import { Container, Row, Col, Modal, InputGroup, FormControl}from 'react-bootstr
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PieChart from '../PieChart/pieChart'
-
+import Aux from '../../../hoc/Aux'
 
 const AddSpending = (props) => {
     const currentVal = 1000
@@ -53,7 +53,7 @@ const AddSpending = (props) => {
     }
     
     return(
-        <>
+        <Aux>
             <Button 
                 className="mt-3 mb-3 w-100 bg-spending" 
                 
@@ -105,7 +105,7 @@ const AddSpending = (props) => {
                 </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+        </Aux>
     )
 }
 
