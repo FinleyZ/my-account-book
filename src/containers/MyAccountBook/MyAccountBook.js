@@ -13,7 +13,7 @@ const MyAccountBook = () =>{
 				menu
 				</Col>
 
-				<Col className="bg-light py-2" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
+				<Col className="bg-light" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
 				<DataDisplay/>
 				</Col>
 			</Row>
