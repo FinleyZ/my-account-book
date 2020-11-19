@@ -1,17 +1,19 @@
 import React, {useState} from 'react';
 
-import { Container, Row, Col }from 'react-bootstrap'
+import { Container, Row, Col, Modal, InputGroup, FormControl}from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
-// import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import PieChart from '../PieChart/pieChart'
 
 
-const addSpending = (props) => {
+const AddSpending = (props) => {
     const currentVal = 1000
     const currentAvg = 1000
     const budget = 1500
     const titleName = props.titleName
-    
+    const [clicked, handleClick] = useState(false)
+    const handleShow = () => handleClick(true)
+    const handleClose = () => handleClick(false)
     const innerText = () =>{
         return(
             <Container >
@@ -52,6 +54,7 @@ const addSpending = (props) => {
     }
     
     return(
+        <>
             <Button 
                 className="mt-3 mb-3" 
                 variant={props.btnColor} 
@@ -59,10 +62,51 @@ const addSpending = (props) => {
                     borderRadius: "1.5rem 0 1.5rem 1.5rem",
                     height:'125px'
                 }} 
+                onClick={handleShow}
                 >
                     {innerText()}
             </Button>
+            <Modal show={clicked&&!props.isCompare} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>{props.titleName}</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {props.isIncome ? 
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                            <InputGroup.Text>$</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl placeholder="Amount"/>
+                        </InputGroup> : null
+                    }
+                
+                    {props.isSpending ? 
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                            <select className="browser-default custom-select" defaultValue="default">
+                                <option value="default" disabled>Choose your option</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select> 
+                            <InputGroup.Text>$</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <FormControl placeholder="Amount"/>
+                        </InputGroup> 
+                        : null
+                    }
+                </Modal.Body>
+                <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                    Apply
+                </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
     )
 }
 
-export default addSpending;
+export default AddSpending;
