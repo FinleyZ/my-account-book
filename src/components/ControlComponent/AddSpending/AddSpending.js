@@ -54,8 +54,16 @@ const AddSpending = (props) => {
     
     return(
         <Aux>
+            <style type="text/css">
+            {`
+                .btn-flat {
+                background-color: purple;
+                color: white;
+                }
+            `}
+            </style>
             <Button 
-                className="mt-3 mb-3 w-100 bg-spending" 
+                className="mt-3 mb-3 w-100" 
                 
                 variant={props.btnColor} 
                 style={{

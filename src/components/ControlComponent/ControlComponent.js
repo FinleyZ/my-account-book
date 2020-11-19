@@ -7,7 +7,7 @@ const ControlComponent = () => {
         // <Container>
         //     <Row>
         <ButtonGroup vertical>
-                <AddSpending titleName='Add Spending' btnColor='primary' isShown isSpending/>
+                <AddSpending titleName='Add Spending' btnColor='flat' isShown isSpending/>
                 <AddSpending titleName='Add Income' btnColor='success' isIncome/>
                 <AddSpending titleName='Compare' btnColor='info' isCompare/>
         </ButtonGroup>
