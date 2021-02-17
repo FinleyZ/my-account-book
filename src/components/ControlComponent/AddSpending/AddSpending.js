@@ -3,7 +3,7 @@ import { Container, Row, Col, Modal, InputGroup, FormControl}from 'react-bootstr
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PieChart from '../PieChart/pieChart'
-import Aux from '../../../hoc/Aux'
+import Aux from '../../../hoc/AuxProject'
 
 const AddSpending = (props) => {
     const currentVal = 1000
