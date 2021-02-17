@@ -1,10 +1,37 @@
-# Getting Started with Create React App
+# My-Account-Book App
+A simple bookkeeping app for the software design course ECE 5010
+
+The project is a desktop-based cross-platform application for personal bookkeeping. It has typical bookkeeping functionalities with data visualization capabilities.
+Some functionalities include recording a user’s transactions, adding input and output streams, visualizing personal finances in charts and graphs per duration, filtering transactions by category, calculating spending averages based on duration, viewing debit and credit information, and comparing financial information between two periods.
+
+# Required Software
+
+The following are dependencies to install or have installed on your machine to run the application:
+
+## Npm and Node.js (installed together)
+
+Install through this [link:] (https://nodejs.org/en/).
+
+## React
+
+Unzip the project folder and change the working directory as the project’s directory
+Install React as a dependency for this project locally by writing this command:
+`npm install react-scripts`
+
+**Note:** You should not install react as a global Node.js module because it can interfere with other Node.js projects you might have on your machine.
+
+# Getting Started with My-Account-Book App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+Before start the app, you may need install the dependencies in the local node_modules folder.\
+By default, npm install will install all modules listed as dependencies in package.json.
 
 ### `npm start`
 
