@@ -10,12 +10,13 @@ The following are dependencies to install or have installed on your machine to r
 
 ## Npm and Node.js (installed together)
 
-Install through this [link:] (https://nodejs.org/en/).
+Install through this [link](https://nodejs.org/en/):
 
 ## React
 
 Unzip the project folder and change the working directory as the project’s directory
 Install React as a dependency for this project locally by writing this command:
+
 `npm install react-scripts`
 
 **Note:** You should not install react as a global Node.js module because it can interfere with other Node.js projects you might have on your machine.
