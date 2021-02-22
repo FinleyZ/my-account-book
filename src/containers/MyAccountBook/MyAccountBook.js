@@ -1,15 +1,27 @@
 import React from 'react'
-import {Container} from 'react-bootstrap'
+import {Container, Row, Col} from 'react-bootstrap'
+import ControlComponent from '../../components/ControlComponent/ControlComponent'
+import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
-import Classes from './MyAccountBook'
-
 const MyAccountBook = () =>{
 	
 	return(
-		// <Container className={Classes.Container} fluid >
+		// <Container fluid className="h-92">
+		<Container fluid className="h-100" style={{overflow: "scroll"}}>
 			<Navigation/>
-		// </Container>
-		
+			<Row className="h-100">
+				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
+				<ControlComponent />
+				</Col>
+
+				<Col className="bg-light" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
+				<DataDisplay/>
+				</Col>
+			</Row>
+
+
+
+		</Container>
 	)
 }
 

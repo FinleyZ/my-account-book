@@ -2,7 +2,6 @@ import React from 'react'
 
 import Logo from '../Logo/Logo'
 import {Navbar, Nav} from 'react-bootstrap'
-import classes from './Navbar.css'
 
 
 const Navigation = (props) => {
