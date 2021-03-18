@@ -3,7 +3,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import ControlComponent from '../../components/ControlComponent/ControlComponent'
 import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
-import FinanceInfo from '../../components/FinanceInfo'
+import FinanceInfo from '../../components/FinanceInfo/FinanceInfo'
 import Budget from '../../components/Budget/Budget'
 const MyAccountBook = () =>{
 
