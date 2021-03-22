@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Calendar from '../Calendar/Calendar'
+import Transations from '../Transations/Transations'
 
 export const DataDisplay = () => {
 	return (
@@ -9,7 +10,9 @@ export const DataDisplay = () => {
 				<Col /*className="bg-success"*/ lg="6" md="6" style={{minHeight: "350px"}}>
 					<Calendar/>
 				</Col>
-				<Col className="bg-warning " lg="6" md="6" style={{minHeight: "350px"}}>this is Transactions </Col>
+				<Col className="bg-warning " lg="6" md="6" style={{minHeight: "350px"}}>
+					<Transations/>
+				</Col>
 			</Row>
 			
 			<Row className="h-50" lg="12">
