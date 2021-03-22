@@ -3,14 +3,18 @@ import {Container, Row, Col} from 'react-bootstrap'
 import ControlComponent from '../../components/ControlComponent/ControlComponent'
 import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
+import FinanceInfo from '../../components/FinanceInfo/FinanceInfo'
+import Budget from '../../components/Budget/Budget'
 const MyAccountBook = () =>{
-	
+
 	return(
 		// <Container fluid className="h-92">
 		<Container fluid className="h-100" style={{overflow: "scroll"}}>
 			<Navigation/>
 			<Row className="h-100">
 				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
+				<FinanceInfo/>
+				<Budget/>
 				<ControlComponent />
 				</Col>
 

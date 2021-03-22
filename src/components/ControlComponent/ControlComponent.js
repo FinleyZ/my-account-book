@@ -9,9 +9,9 @@ const ControlComponent = () => {
         <ButtonGroup vertical>
                 <AddSpending titleName='Add Spending' btnColor='flat' isShown isSpending/>
                 <AddSpending titleName='Add Income' btnColor='success' isIncome/>
-                <AddSpending titleName='Compare' btnColor='info' isCompare/>
+                <AddSpending titleName='Compare' btnColor='info' Compare/>
         </ButtonGroup>
-                
+
         //     </Row>
         // </Container>
         )

@@ -4,6 +4,14 @@ import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PieChart from '../PieChart/pieChart'
 import Aux from '../../../hoc/AuxProject'
+import DayPickerInput from 'react-day-picker/DayPickerInput';
+import 'react-day-picker/lib/style.css';
+
+
+function stringify (x) {
+    console.log(Object.prototype.toString.call(x));
+}
+
 
 const AddSpending = (props) => {
     const currentVal = 1000
@@ -24,18 +32,18 @@ const AddSpending = (props) => {
                     </Col>
                     <Col lg='8'>
                         <Row><Col className="mt-1 font-weight-bold" style={{fontSize: 14}}>{titleName}</Col></Row>
-                        {props.isCompare ? 
+                        {props.isCompare ?
                                     <Row>
                                         <Col className="mt-2" style={{fontSize: 12}}>Last Month</Col>
                                     </Row>
                                     :
                                     <Row>
                                         <Col className="mt-2" style={{fontSize: 12}}>Current</Col>
-                                        <Col className="mt-2" style={{fontSize: 12}}>Monthly</Col>
+                                        <Col className="mt-2" style={{fontSize: 12}}>Monthly Avg</Col>
                                     </Row>
                                     }
-                        
-                        {props.isCompare ? 
+
+                        {props.isCompare ?
                                     <Row>
                                         <Col className="mt-0" style={{fontSize: 12}}>${currentVal}</Col>
                                     </Row>
@@ -48,10 +56,10 @@ const AddSpending = (props) => {
                     </Col>
                 </Row>
             </Container>
-            
+
         )
     }
-    
+
     return(
         <Aux>
             <style type="text/css">
@@ -62,14 +70,14 @@ const AddSpending = (props) => {
                 }
             `}
             </style>
-            <Button 
-                className="mt-3 mb-3 w-100" 
-                
-                variant={props.btnColor} 
+            <Button
+                className="mt-3 mb-3 w-100"
+
+                variant={props.btnColor}
                 style={{
                     borderRadius: "1.5rem 0 1.5rem 1.5rem",
                     height:'125px'
-                }} 
+                }}
                 onClick={handleShow}
                 >
                     {innerText()}
@@ -79,30 +87,209 @@ const AddSpending = (props) => {
                 <Modal.Title>{props.titleName}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    {props.isIncome ? 
+                    {props.isIncome ?
+                      <InputGroup>
+                      <InputGroup>
+                          <InputGroup.Prepend>
+                          <InputGroup.Text>$CAD</InputGroup.Text>
+                          </InputGroup.Prepend>
+                          <FormControl placeholder="Amount"/>
+                      </InputGroup>
+                      <InputGroup>
+                          <InputGroup.Prepend>
+                          <select className="browser-default custom-select" defaultValue="default">
+                              <option value="default" disabled>Choose type</option>
+                              <option value="1">Cash</option>
+                              <option value="2">Credit account 1</option>
+                              <option value="3">Debit account 1</option>
+
+                          </select>
+
+                          </InputGroup.Prepend>
+
+                      </InputGroup>
+                      <InputGroup>
+                          <InputGroup.Prepend>
+                          <select className="browser-default custom-select" defaultValue="default">
+                              <option value="default" disabled>Choose Category</option>
+                              <option value="1">MISC</option>
+                              <option value="2">Job Salary</option>
+                              <option value="3">Investments</option>
+                              <option value="4">Incentives/Awards</option>
+                          </select>
+
+                          </InputGroup.Prepend>
+
+                      </InputGroup>
+
+                      <InputGroup>
+                          <InputGroup.Prepend>
+                          <select className="browser-default custom-select" defaultValue="default">
+                              <option value="default" disabled>Choose Frequency</option>
+                              <option value="1">Once</option>
+                              <option value="2">Weekly</option>
+                              <option value="3">Monthly</option>
+                          </select>
+
+                          </InputGroup.Prepend>
+
+                      </InputGroup>
+                      <InputGroup>
+                      <InputGroup.Prepend>
+                      <InputGroup.Text style={
+                        {  height:'30px'}
+
+                      }>Choose date</InputGroup.Text>
+
+                      </InputGroup.Prepend>
+                      <DayPickerInput onDayChange={day => console.log(day)} />
+
+
+                      </InputGroup>
+                      </InputGroup>
+                      : null
+                    }
+
+                    {props.isSpending ?
+                        <InputGroup>
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <InputGroup.Text>$</InputGroup.Text>
+                            <InputGroup.Text>$CAD</InputGroup.Text>
                             </InputGroup.Prepend>
                             <FormControl placeholder="Amount"/>
-                        </InputGroup> : null
-                    }
-                
-                    {props.isSpending ? 
+                        </InputGroup>
                         <InputGroup>
                             <InputGroup.Prepend>
                             <select className="browser-default custom-select" defaultValue="default">
-                                <option value="default" disabled>Choose your option</option>
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select> 
-                            <InputGroup.Text>$</InputGroup.Text>
+                                <option value="default" disabled>Choose type</option>
+                                <option value="1">Cash</option>
+                                <option value="2">Credit account 1</option>
+                                <option value="3">Debit account 1</option>
+
+                            </select>
+
                             </InputGroup.Prepend>
-                            <FormControl placeholder="Amount"/>
-                        </InputGroup> 
+
+                        </InputGroup>
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                            <select className="browser-default custom-select" defaultValue="default">
+                                <option value="default" disabled>Choose Category</option>
+                                <option value="1">MISC</option>
+                                <option value="2">Education</option>
+                                <option value="3">Shopping</option>
+                                <option value="4">Personal Care</option>
+                                <option value="5">Health & Fitness</option>
+                                <option value="6">Kids</option>
+                                <option value="7">Food & Dining</option>
+                                <option value="8">Investments</option>
+                                <option value="9">Transport</option>
+                                <option value="10">Fees & Charges</option>
+                            </select>
+
+                            </InputGroup.Prepend>
+
+                        </InputGroup>
+
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                            <select className="browser-default custom-select" defaultValue="default">
+                                <option value="default" disabled>Choose Frequency</option>
+                                <option value="1">Once</option>
+                                <option value="2">Weekly</option>
+                                <option value="3">Monthly</option>
+                            </select>
+
+                            </InputGroup.Prepend>
+
+                        </InputGroup>
+                        <InputGroup>
+                        <InputGroup.Prepend>
+                        <InputGroup.Text style={
+                          {  height:'30px'}
+
+                        }>Choose date</InputGroup.Text>
+
+                        </InputGroup.Prepend>
+                        <DayPickerInput onDayChange={day => console.log(day)} />
+
+
+                        </InputGroup>
+                        </InputGroup>
                         : null
                     }
+
+                    {props.Compare ?
+                      <InputGroup>
+                      <InputGroup>
+
+                      <InputGroup.Prepend>
+                      <InputGroup.Text style={
+                        {  height:'30px'}
+
+                      }> Choose range 1 initial day</InputGroup.Text>
+
+                      </InputGroup.Prepend>
+                      <DayPickerInput  onDayChange={day => console.log(day)} />
+
+
+
+                      </InputGroup>
+
+                      <InputGroup>
+
+                      <InputGroup.Prepend>
+                      <InputGroup.Text style={
+                        {  height:'30px',
+                          width:'209px'
+                      }
+
+                      }> Choose range 1 final day</InputGroup.Text>
+
+                      </InputGroup.Prepend>
+                      <DayPickerInput  onDayChange={day => console.log(day)} />
+
+
+
+                      </InputGroup>
+
+                      <InputGroup>
+
+                      <InputGroup.Prepend>
+                      <InputGroup.Text style={
+                        {  height:'30px'}
+
+                      }> Choose range 2 initial day</InputGroup.Text>
+
+                      </InputGroup.Prepend>
+                      <DayPickerInput  onDayChange={day => console.log(day)} />
+
+
+
+                      </InputGroup>
+
+                      <InputGroup>
+
+                      <InputGroup.Prepend>
+                      <InputGroup.Text style={
+                        {  height:'30px',
+                          width:'209px'
+                      }
+
+                    }> Choose range 2 final day</InputGroup.Text>
+
+                      </InputGroup.Prepend>
+                      <DayPickerInput  onDayChange={day => console.log(day)} />
+
+
+
+                      </InputGroup>
+
+                      </InputGroup>
+                      : null
+                    }
+
+
                 </Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
