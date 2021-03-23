@@ -1,9 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import ControlComponent from '../../components/ControlComponent/ControlComponent'
 import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
+
+import monthlyDummyData from './'
+
+
 const MyAccountBook = () =>{
+	const [monthlyData , monthlyData] = useState(0);
+
 	
 	return(
 		// <Container fluid className="h-92">

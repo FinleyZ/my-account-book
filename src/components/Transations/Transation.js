@@ -1,12 +1,6 @@
 import React from 'react'
-import { Container, Row, Col } from 'react-bootstrap'
-import Dropdown from 'react-bootstrap/DropdownButton'
 
-const categorys = ["Income", "MISC", "Expense", "Education", "Shopping", 
-									 "Personal Care", "Health & Fitness", "Kids", "Food & Dining", 
-									 "Investments", "Transport","Fees & Charges"];
-
-const Transations =() => {
+const Transation =() => {
 	return(
 		<Container>
 			<Row>
@@ -24,5 +18,4 @@ const Transations =() => {
 	)
 
 };
-
-export default Transations
+export default Transation
