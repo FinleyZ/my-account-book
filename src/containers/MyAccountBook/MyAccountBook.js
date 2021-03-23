@@ -4,11 +4,12 @@ import ControlComponent from '../../components/ControlComponent/ControlComponent
 import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
 
-import monthlyDummyData from './'
+import monthlyDummyData from '../../components/DummyData/Dummydata.json'
+
 
 
 const MyAccountBook = () =>{
-	const [monthlyData , monthlyData] = useState(0);
+	const [monthlyData , setMonthlyData] = useState(monthlyDummyData);
 
 	
 	return(
@@ -21,7 +22,7 @@ const MyAccountBook = () =>{
 				</Col>
 
 				<Col className="bg-light" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
-				<DataDisplay/>
+				<DataDisplay monthlyData={monthlyData} />
 				</Col>
 			</Row>
 
