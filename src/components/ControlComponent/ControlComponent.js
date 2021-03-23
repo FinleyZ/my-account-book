@@ -5,13 +5,21 @@ import AddSpending from './AddSpending/AddSpending'
 import FinanceInfo from '../../components/FinanceInfo/FinanceInfo'
 import Budget from '../../components/Budget/Budget'
 import {Container, Row, Col} from 'react-bootstrap'
-const ControlComponent = () => {
+const ControlComponent = (props) => {
+
+ let monthlyData = props.monthlyData
+ 
+
+//Function updateAsset 
+
+
     return (
         <Container>
-          <FinanceInfo/>
+          <FinanceInfo />
 	        <Budget/>
           <Row>
         		<ButtonGroup vertical>
+
                 <AddSpending titleName='Add Spending' btnColor='flat' isShown isSpending/>
                 <AddSpending titleName='Add Income' btnColor='success' isIncome/>
                 <AddSpending titleName='Compare' btnColor='info' Compare/>
