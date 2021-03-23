@@ -1,15 +1,19 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Calendar from '../Calendar/Calendar'
+import Transactions from '../Transations/Transactions'
 
-export const DataDisplay = () => {
+export const DataDisplay = (props) => {
+	//date 
 	return (
 		<Container fluid className="h-100" style={{overflow: "scroll"}}>
 			<Row className="h-50 pt-2" lg="12">
 				<Col /*className="bg-success"*/ lg="6" md="6" style={{minHeight: "350px"}}>
 					<Calendar/>
 				</Col>
-				<Col className="bg-warning " lg="6" md="6" style={{minHeight: "350px"}}>this is Transactions </Col>
+				<Col /*className="bg-warning"*/  lg="6" md="6" style={{minHeight: "350px"}}>
+					<Transactions monthlyData={props.monthlyData} />
+				</Col>
 			</Row>
 			
 			<Row className="h-50" lg="12">

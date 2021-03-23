@@ -1,11 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import ControlComponent from '../../components/ControlComponent/ControlComponent'
 import DataDisplay from '../../components/DataDisplay/DataDisplay'
 import Navigation from '../../components/Navbar/Navbar'
-import FinanceInfo from '../../components/FinanceInfo/FinanceInfo'
-import Budget from '../../components/Budget/Budget'
+
+import monthlyDummyData from '../../components/DummyData/Dummydata.json'
+
+
+
 const MyAccountBook = () =>{
+	const [monthlyData , setMonthlyData] = useState(monthlyDummyData);
+	const [CurrentAccount , setCurrentAccount] = useState();
+	
+
 
 	return(
 		// <Container fluid className="h-92">
@@ -13,13 +20,11 @@ const MyAccountBook = () =>{
 			<Navigation/>
 			<Row className="h-100">
 				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
-				<FinanceInfo/>
-				<Budget/>
-				<ControlComponent />
+				<ControlComponent monthlyData = {monthlyData}/>
 				</Col>
 
 				<Col className="bg-light" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
-				<DataDisplay/>
+				<DataDisplay monthlyData={monthlyData} />
 				</Col>
 			</Row>
 
