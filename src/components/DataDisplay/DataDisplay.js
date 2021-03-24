@@ -7,21 +7,20 @@ export const DataDisplay = (props) => {
 	//date 
 	return (
 		<Container fluid className="h-100" style={{overflow: "scroll"}}>
-			<Row className="h-50 pt-2" lg="12">
-				<Col /*className="bg-success"*/ lg="6" md="6" style={{minHeight: "350px"}}>
-					<Calendar/>
-				</Col>
-				<Col /*className="bg-warning"*/  lg="6" md="6" style={{minHeight: "350px"}}>
-					<Transactions monthlyData={props.monthlyData} />
-				</Col>
-			</Row>
-			
-			<Row className="h-50" lg="12">
-				<Col className="bg-info " lg="6" md="6" style={{minHeight: "350px"}}>this is Data</Col>
-				<Col className="bg-secondary" lg="6" md="6" style={{minHeight: "350px"}}>this is Graph</Col>
-			</Row>
-		</Container>
-
+		<Row className="h-50 pt-2" lg="12">
+			<Col /*className="bg-success"*/ lg="6" md="6" style={{height: "475px"}}>
+				<Calendar/>
+			</Col>
+			<Col className="bg-warning " lg="6" md="6" style={{height: "475px"}}>
+				<Transactions monthlyData={props.monthlyData} />
+			</Col>
+		</Row>
+		
+		<Row className="h-50" lg="12">
+			<Col className="bg-info " lg="6" md="6" style={{height: "475px"}}>this is Data</Col>
+			<Col className="bg-secondary" lg="6" md="6" style={{height: "475px"}}>this is Graph</Col>
+		</Row>
+	</Container>
 	)
 }
 

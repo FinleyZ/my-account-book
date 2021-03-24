@@ -16,9 +16,7 @@ const monthlyTransactions = props.monthlyData[0].account[0].transaction;
 	console.log(monthlyTransactions)
 
 	return(
-		<Container style={{overflow: "scroll"}}>
-
-			<Row>
+		<Container className= "h-100" >
 				<select 
 					className="browser-default custom-select" 
 					defaultValue="All Categorys" 
@@ -29,12 +27,13 @@ const monthlyTransactions = props.monthlyData[0].account[0].transaction;
 							<option key={category+index} value={category}> {category } </option>
 						))};
         </select>
-			</Row>
-			<Row>
-			  {monthlyTransactions.map((transaction, index)=>(
-					<Transaction amount = {transaction.amount} comment= {transaction.comment}/>
-				))}
-			</Row>
+
+				<Container className= "overflow-auto mt-2 " style ={{height:"90%"}}>
+						{monthlyTransactions.map((transaction, index)=>(
+							<Transaction amount = {transaction.amount} comment= {transaction.comment}/>
+						))}
+				</Container>
+			
 		</Container>
 	)
 
