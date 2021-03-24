@@ -8,15 +8,137 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 
 
-function stringify (x) {
-    console.log(Object.prototype.toString.call(x));
+
+
+
+export const AddSpending = (props) => {
+    
+    var currentSpendingVal = 643.62    
+    var currentSpendingAvg = 1240.57
+    
+    function GetNbrofTransactionsPerAccount(accountNumber){
+        return Object.keys(props.monthlyData[0].account[accountNumber].transaction).length
+      }
+
+      
+      
+function AddSpendingJson(accountNumber, category, date, amount, comment){
+    var TransCount=GetNbrofTransactionsPerAccount(accountNumber);
+    var id=TransCount;
+    var JsonBody={
+      "id": id,
+      "date": date,
+      "amount": amount*-1,
+      "category": category,
+      "comment": comment
+    }
+  
+    return JsonBody;
+  }
+
+  function AddIncomeJson(accountNumber, category, date, amount, comment){
+    var TransCount=GetNbrofTransactionsPerAccount(accountNumber);
+    var id=TransCount;
+    var JsonBody={
+      "id": id,
+      "date": date,
+      "amount": amount,
+      "category": category,
+      "comment": comment
+    }
+  
+    return JsonBody;
+  }
+  
+function AddNewSpending(accountNumber, category, date, amount, comment){
+    var newAmountTotal=0;
+    var TransCount=GetNbrofTransactionsPerAccount(accountNumber);
+    props.monthlyData[0].account[accountNumber].transaction[TransCount]=AddSpendingJson(accountNumber, category, date, amount, comment);
+   newAmountTotal=parseFloat(props.monthlyData[0].asset.toString().replace(/,/, ''))-amount;
+  props.monthlyData[0].asset=newAmountTotal;
+  }
+
+
+  function AddNewIncome(accountNumber, category, date, amount, comment){
+    var newAmountTotal=0;
+    var TransCount=GetNbrofTransactionsPerAccount(accountNumber);
+    props.monthlyData[0].account[accountNumber].transaction[TransCount]=AddIncomeJson(accountNumber, category, date, amount, comment);
+   newAmountTotal=parseFloat(props.monthlyData[0].asset.toString().replace(/,/, ''))+amount;
+  props.monthlyData[0].asset=newAmountTotal;
+  }
+
+// for input money
+  function showValueTag(tag,tagnbr){
+        var value=document.getElementsByTagName(tag)[tagnbr].value;
+      return value;
+  }
+
+  // for select drop down
+  
+  function showValueId(id){
+    var x=document.getElementById(id);
+    var value = x.options[x.selectedIndex].text;
+    return value;
+}
+
+// for date
+
+  var SelectDate="";
+  
+function SetDate(day){
+    SelectDate=day;
+    SelectDate= SelectDate.getDate() + "/" + (SelectDate.getMonth() + 1) + "/" + SelectDate.getFullYear();
+    return SelectDate;
+}
+
+function reload(id, newContent){
+    var container = document.getElementById(id);
+    container.innerHTML=  newContent; 
+   //this line is to watch the result in console , you can remove it later	
+    console.log("Refreshed"); 
 }
 
 
-const AddSpending = (props) => {
-    const currentVal = 1000
-    const currentAvg = 1000
-    const budget = 1500
+// overall function to handle transactions
+function handleTransactions(){
+    try{    
+        
+    var IncomeComment=showValueTag("input",0);
+    var IncomeMoney=parseFloat(showValueTag("input",1));
+    var IncomeType=showValueId("IncomeSelectType");
+    var IncomeCateg=showValueId("IncomeSelectCateg");
+    var IncomeDate=SelectDate;
+    console.log(IncomeComment,IncomeMoney,IncomeType,IncomeCateg,IncomeDate);
+    AddNewIncome(IncomeType, IncomeCateg, IncomeDate, IncomeMoney, IncomeComment);
+    console.log(props.monthlyData[0]);
+    currentSpendingVal=currentSpendingVal+IncomeMoney;
+reload("spending money",currentSpendingVal);
+console.log(currentSpendingVal);
+    }
+    
+    catch (error){
+        try{
+            console.log(currentSpendingVal);
+            var SpendComment=showValueTag("input",0);
+            var SpendMoney=showValueTag("input",1);
+            var SpendType=showValueId("SpendSelectType");
+            var SpendCateg=showValueId("SpendSelectCateg");
+            var SpendDate=SelectDate;
+            console.log(SpendComment,SpendMoney,SpendType,SpendCateg,SpendDate);
+            AddNewSpending(SpendType, SpendCateg, SpendDate, SpendMoney, SpendComment);
+            console.log(props.monthlyData[0]);
+            currentSpendingVal=currentSpendingVal-SpendMoney;
+            reload("spending money",currentSpendingVal);
+        }
+        catch (error){
+            console.log(error);
+            
+        }
+    }
+    
+}
+    
+    var budget = 1000
     const titleName = props.titleName
     const [clicked, handleClick] = useState(false)
     const handleShow = () => handleClick(true)
@@ -27,7 +149,7 @@ const AddSpending = (props) => {
                 <Row>
                     <Col lg='4'>
                         <Row>
-                            {props.isShown ? <PieChart spending={currentVal} remaining={budget-currentVal}/> : null}
+                            {props.isShown ? <PieChart spending={currentSpendingVal} remaining={budget-currentSpendingVal}/> : null}
                         </Row>
                     </Col>
                     <Col lg='8'>
@@ -45,12 +167,12 @@ const AddSpending = (props) => {
 
                         {props.isCompare ?
                                     <Row>
-                                        <Col className="mt-0" style={{fontSize: 12}}>${currentVal}</Col>
+                                        <Col className="mt-0" style={{fontSize: 12}}>${currentSpendingVal}</Col>
                                     </Row>
                                     :
                                     <Row>
-                                        <Col className="mt-0" style={{fontSize: 12}}>${currentVal}</Col>
-                                        <Col className="mt-0" style={{fontSize: 12}}>${currentAvg}</Col>
+                                        <Col className="mt-0" style={{fontSize: 12}} id="spending money">${currentSpendingVal}</Col>
+                                        <Col className="mt-0" style={{fontSize: 12}}>${currentSpendingAvg}</Col>
                                     </Row>
                                     }
                     </Col>
@@ -90,18 +212,24 @@ const AddSpending = (props) => {
                     {props.isIncome ?
                       <InputGroup>
                       <InputGroup>
+                            <InputGroup.Prepend>
+                            <InputGroup.Text>Comment</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <input id="IncomeComment" />
+                        </InputGroup>
+                      <InputGroup >
                           <InputGroup.Prepend>
                           <InputGroup.Text>$CAD</InputGroup.Text>
                           </InputGroup.Prepend>
-                          <FormControl placeholder="Amount"/>
+                          <input  type="text" />
                       </InputGroup>
                       <InputGroup>
                           <InputGroup.Prepend>
-                          <select className="browser-default custom-select" defaultValue="default">
-                              <option value="default" disabled>Choose type</option>
-                              <option value="1">Cash</option>
-                              <option value="2">Credit account 1</option>
-                              <option value="3">Debit account 1</option>
+                          <select className="browser-default custom-select" defaultValue="default" id="IncomeSelectType">
+                          <option value="default" disabled>Choose Account Number</option>
+                                <option value="0"> 0</option>
+                                <option value="1">  1</option>
+                                <option value="2">  2</option>
 
                           </select>
 
@@ -110,7 +238,7 @@ const AddSpending = (props) => {
                       </InputGroup>
                       <InputGroup>
                           <InputGroup.Prepend>
-                          <select className="browser-default custom-select" defaultValue="default">
+                          <select className="browser-default custom-select" defaultValue="default" id="IncomeSelectCateg">
                               <option value="default" disabled>Choose Category</option>
                               <option value="1">MISC</option>
                               <option value="2">Job Salary</option>
@@ -124,7 +252,7 @@ const AddSpending = (props) => {
 
                       <InputGroup>
                           <InputGroup.Prepend>
-                          <select className="browser-default custom-select" defaultValue="default">
+                          <select className="browser-default custom-select" defaultValue="default" id="IncomeSelectFreq">
                               <option value="default" disabled>Choose Frequency</option>
                               <option value="1">Once</option>
                               <option value="2">Weekly</option>
@@ -142,10 +270,12 @@ const AddSpending = (props) => {
                       }>Choose date</InputGroup.Text>
 
                       </InputGroup.Prepend>
-                      <DayPickerInput onDayChange={day => console.log(day)} />
+                      <DayPickerInput onDayChange={day =>SetDate(day)} />
 
 
                       </InputGroup>
+
+                      
                       </InputGroup>
                       : null
                     }
@@ -154,17 +284,23 @@ const AddSpending = (props) => {
                         <InputGroup>
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <InputGroup.Text>$CAD</InputGroup.Text>
+                            <InputGroup.Text>Comment</InputGroup.Text>
                             </InputGroup.Prepend>
-                            <FormControl placeholder="Amount"/>
+                            <input id="SpendComment" />
                         </InputGroup>
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <select className="browser-default custom-select" defaultValue="default">
-                                <option value="default" disabled>Choose type</option>
-                                <option value="1">Cash</option>
-                                <option value="2">Credit account 1</option>
-                                <option value="3">Debit account 1</option>
+                            <InputGroup.Text>$CAD</InputGroup.Text>
+                            </InputGroup.Prepend>
+                            <input id="SpendMoney" placeholder="amount"/>
+                        </InputGroup>
+                        <InputGroup>
+                            <InputGroup.Prepend>
+                            <select className="browser-default custom-select" defaultValue="default" id="SpendSelectType">
+                                <option value="default" disabled>Choose Account Number</option>
+                                <option value="0"> 0</option>
+                                <option value="1">  1</option>
+                                <option value="2">  2</option>
 
                             </select>
 
@@ -173,7 +309,7 @@ const AddSpending = (props) => {
                         </InputGroup>
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <select className="browser-default custom-select" defaultValue="default">
+                            <select className="browser-default custom-select" defaultValue="default" id="SpendSelectCateg">
                                 <option value="default" disabled>Choose Category</option>
                                 <option value="1">MISC</option>
                                 <option value="2">Education</option>
@@ -193,7 +329,7 @@ const AddSpending = (props) => {
 
                         <InputGroup>
                             <InputGroup.Prepend>
-                            <select className="browser-default custom-select" defaultValue="default">
+                            <select className="browser-default custom-select" defaultValue="default" id="SelectSpending">
                                 <option value="default" disabled>Choose Frequency</option>
                                 <option value="1">Once</option>
                                 <option value="2">Weekly</option>
@@ -211,7 +347,7 @@ const AddSpending = (props) => {
                         }>Choose date</InputGroup.Text>
 
                         </InputGroup.Prepend>
-                        <DayPickerInput onDayChange={day => console.log(day)} />
+                        <DayPickerInput onDayChange={day =>SetDate(day)} />
 
 
                         </InputGroup>
@@ -295,7 +431,7 @@ const AddSpending = (props) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" data-target='Modal' onClick={() => handleTransactions()}>
                     Apply
                 </Button>
                 </Modal.Footer>
