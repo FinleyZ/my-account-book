@@ -2,10 +2,11 @@ import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 
 
-const asset=500
-const debt=1500
 
-export const FinanceInfo = () => {
+
+export const FinanceInfo = (props) => {
+	const asset=props.monthlyData[0].asset;
+	const debt=props.monthlyData[0].debt;
 	return (
 		<Container fluid className="my-0" >
 
