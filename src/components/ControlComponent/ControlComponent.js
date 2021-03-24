@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState}from 'react' ;
 
 import {ButtonGroup} from 'react-bootstrap'
 import AddSpending from './AddSpending/AddSpending'
@@ -15,14 +15,14 @@ const ControlComponent = (props) => {
 
     return (
         <Container>
-          <FinanceInfo />
+          <FinanceInfo monthlyData={props.monthlyData}/>
 	        <Budget/>
           <Row>
         		<ButtonGroup vertical>
 
-                <AddSpending titleName='Add Spending' btnColor='flat' isShown isSpending/>
-                <AddSpending titleName='Add Income' btnColor='success' isIncome/>
-                <AddSpending titleName='Compare' btnColor='info' Compare/>
+                <AddSpending  monthlyData={props.monthlyData} titleName='Add Spending' btnColor='flat' isShown isSpending/>
+                <AddSpending  monthlyData={props.monthlyData} titleName='Add Income' btnColor='success' isIncome/>
+                <AddSpending monthlyData={props.monthlyData} titleName='Compare' btnColor='info' Compare/>
         		</ButtonGroup>
             </Row>
         </Container>
