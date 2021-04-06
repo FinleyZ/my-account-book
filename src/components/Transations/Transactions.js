@@ -8,19 +8,33 @@ const categoroies = ["All Categories","Income", "MISC", "Expense", "Education", 
 									 "Investments", "Transport","Fees & Charges"];
 
 const Transactions =(props) => {
-	const [CurrentCategory , setCurrentAccount] = useState();
+	const [CurrentCategory , setCurrentAccount] = useState("All Categories");
+	const selectDate = props.selectDate;
+	// console.log(selectDate)
 
+	const handleCategoroiesChange = (e) => setCurrentAccount(e.target.value)
 
-const monthlyTransactions = props.monthlyData[0].account[0].transaction;
+	const monthlyTransactions = props.monthlyData[0].account[0].transaction;
 
-	console.log(monthlyTransactions)
+	const displayTransactions = monthlyTransactions.filter(t => {
+		if(CurrentCategory=="All Categories"){
+			return (t.date == selectDate);
+		}else{
+			return ((t.date == selectDate)&&(t.category==CurrentCategory));
+		}
+	 });
 
+	
+
+	console.log(displayTransactions)
+	console.log(CurrentCategory)
 	return(
 		<Container className= "h-100" >
 				<select 
 					className="browser-default custom-select" 
-					defaultValue="All Categorys" 
+					defaultValue={"All Categories"}
 					style={{width: "40%"}}
+					onChange={e => handleCategoroiesChange(e)}
 				>
           {/* <option value="default" disabled>Choose Category</option> */}
 						{categoroies.map((category, index) =>(
@@ -29,11 +43,10 @@ const monthlyTransactions = props.monthlyData[0].account[0].transaction;
         </select>
 
 				<Container className= "overflow-auto mt-2 " style ={{height:"90%"}}>
-						{monthlyTransactions.map((transaction, index)=>(
+						{displayTransactions.map((transaction, index)=>(
 							<Transaction amount = {transaction.amount} comment= {transaction.comment}/>
 						))}
 				</Container>
-			
 		</Container>
 	)
 
