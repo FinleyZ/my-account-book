@@ -2,27 +2,31 @@ import React,{useState}from 'react' ;
 
 import {ButtonGroup} from 'react-bootstrap'
 import AddSpending from './AddSpending/AddSpending'
+import AddIncome from './AddIncome/AddIncome'
 import FinanceInfo from '../../components/FinanceInfo/FinanceInfo'
-import Budget from '../../components/Budget/Budget'
+import Budget from './Budget/Budget'
+import Compare from './Compare/Compare'
 import {Container, Row, Col} from 'react-bootstrap'
 const ControlComponent = (props) => {
 
  let monthlyData = props.monthlyData
+
  
 
-//Function updateAsset 
+
+//Function updateAsset
 
 
     return (
         <Container>
           <FinanceInfo monthlyData={props.monthlyData}/>
-	        <Budget/>
+
           <Row>
         		<ButtonGroup vertical>
-
-                <AddSpending  monthlyData={props.monthlyData} titleName='Add Spending' btnColor='flat' isShown isSpending/>
-                <AddSpending  monthlyData={props.monthlyData} titleName='Add Income' btnColor='success' isIncome/>
-                <AddSpending monthlyData={props.monthlyData} titleName='Compare' btnColor='info' Compare/>
+                <Budget monthlyData={props.monthlyData} titleName='Set Monthly Budget'btnColor='info' isBudget/>
+                <AddSpending  monthlyData={props.monthlyData} UpdateData={props.setData} titleName='Add Spending' btnColor='flat' isShown isSpending/>
+                <AddIncome  monthlyData={props.monthlyData} UpdateData={props.setData} titleName='Add Income' btnColor='success' isIncome/>
+                <Compare  monthlyData={props.monthlyData} titleName='Compare' btnColor='danger' Compare/>
         		</ButtonGroup>
             </Row>
         </Container>

@@ -10,9 +10,9 @@ import monthlyDummyData from '../../components/DummyData/Dummydata.json'
 
 const MyAccountBook = () =>{
 	const [monthlyData , setMonthlyData] = useState(monthlyDummyData);
-	// const [CurrentAccount , setCurrentAccount] = useState();
+	//const [CurrentAccount , setCurrentAccount] = useState();
 	
-
+	//console.log(monthlyData[0]);
 
 	return(
 		// <Container fluid className="h-92">
@@ -20,7 +20,7 @@ const MyAccountBook = () =>{
 			<Navigation/>
 			<Row className="h-100">
 				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
-				<ControlComponent monthlyData = {monthlyData}/>
+				<ControlComponent monthlyData = {monthlyData} setData={setMonthlyData}/>
 				</Col>
 
 				<Col className="bg-light" lg="9" style={{borderRadius: "2rem 2rem 0 0"} }>
