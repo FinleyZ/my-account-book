@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import Calendar from '../Calendar/Calendar'
 import Transactions from '../Transations/Transactions'
+import Charts from '../Charts/Charts'
 
-export const DataDisplay = (props) => {
+const DataDisplay = (props) => {
 	const [CurrentDate , setCurrentDate] = useState(new Date());
 
 
@@ -39,8 +40,13 @@ export const DataDisplay = (props) => {
 		</Row>
 		
 		<Row className="h-50" lg="12">
-			<Col className="bg-info " lg="6" md="6" style={{height: "475px"}}>this is Data</Col>
-			<Col className="bg-secondary" lg="6" md="6" style={{height: "475px"}}>this is Graph</Col>
+			<Col className="bg-info " lg="6" md="6" style={{height: "475px"}}>
+				this is Data
+			</Col>
+			
+			<Col /*className="bg-secondary"*/ lg="6" md="6" style={{height: "475px"}}>
+				<Charts/>
+			</Col>
 		</Row>
 	</Container>
 	)
