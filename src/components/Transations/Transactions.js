@@ -17,10 +17,10 @@ const Transactions =(props) => {
 	const monthlyTransactions = props.monthlyData[0].account[0].transaction;
 
 	const displayTransactions = monthlyTransactions.filter(t => {
-		if(CurrentCategory=="All Categories"){
-			return (t.date == selectDate);
+		if(CurrentCategory==="All Categories"){
+			return (t.date === selectDate);
 		}else{
-			return ((t.date == selectDate)&&(t.category==CurrentCategory));
+			return ((t.date === selectDate)&&(t.category==CurrentCategory));
 		}
 	 });
 
@@ -44,7 +44,7 @@ const Transactions =(props) => {
 
 				<Container className= "overflow-auto mt-2 " style ={{height:"90%"}}>
 						{displayTransactions.map((transaction, index)=>(
-							<Transaction amount = {transaction.amount} comment= {transaction.comment}/>
+							<Transaction key={index} amount = {transaction.amount} comment= {transaction.comment}/>
 						))}
 				</Container>
 		</Container>
