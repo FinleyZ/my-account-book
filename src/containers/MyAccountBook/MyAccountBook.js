@@ -10,7 +10,7 @@ import monthlyDummyData from '../../components/DummyData/Dummydata.json'
 
 const MyAccountBook = () =>{
 	const [monthlyData , setMonthlyData] = useState(monthlyDummyData);
-	const [CurrentAccount , setCurrentAccount] = useState();
+	// const [CurrentAccount , setCurrentAccount] = useState();
 	
 
 
