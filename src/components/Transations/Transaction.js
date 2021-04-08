@@ -4,8 +4,8 @@ import {Container, Row, Col} from 'react-bootstrap'
 
 const Transaction =(props) => {
 	return(
-		<Container className="pb-1">
-			<Row style={{background:"#4d7fb9"}}>
+		<Container className="pb-1" >
+			<Row style={{background:"rgb(255,255,255,0.6)", borderRadius: "5px"}}>
 				<Col xs={12} md={8} style={{overflow: "scroll"}}>
 						{props.comment}
 				</Col>

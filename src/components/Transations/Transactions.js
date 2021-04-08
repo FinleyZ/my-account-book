@@ -20,7 +20,7 @@ const Transactions =(props) => {
 		if(CurrentCategory==="All Categories"){
 			return (t.date === selectDate);
 		}else{
-			return ((t.date === selectDate)&&(t.category==CurrentCategory));
+			return ((t.date === selectDate)&&(t.category===CurrentCategory));
 		}
 	 });
 

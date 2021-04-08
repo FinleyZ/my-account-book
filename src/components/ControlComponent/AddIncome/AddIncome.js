@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Container, Row, Col, Modal, InputGroup, FormControl}from 'react-bootstrap'
+import { Container, Row, Col, Modal, InputGroup}from 'react-bootstrap'
 import Button from 'react-bootstrap/Button'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PieChart from '../PieChart/pieChart'
@@ -15,7 +15,7 @@ export const AddIncome = (props) => {
 
     const [IncomeMoney, ChangeIncome] = useState(0)
     const [Budget, SetBudget] = useState(props.monthlyData[0].budget);
-    const [value,ChangeValue]= useState(0);
+    // const [value,ChangeValue]= useState(0);
 
     var currentIncomeAvg = 4329.68
 

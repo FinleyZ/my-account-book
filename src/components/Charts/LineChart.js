@@ -13,45 +13,36 @@ import {
 } from 'recharts';
 
 const data = [
-  { name: '1', uv: 300, pv: 456 },
-  { name: '2', uv: -145, pv: 230 },
-  { name: '3', uv: -100, pv: 345 },
-  { name: '4', uv: -8, pv: 450 },
-  { name: '5', uv: 100, pv: 321 },
-  { name: '6', uv: 9, pv: 235 },
-  { name: '7', uv: 53, pv: 267 },
-  { name: '8', uv: 252, pv: -378 },
-  { name: '9', uv: 79, pv: -210 },
-  { name: '10', uv: 294, pv: -23 },
-  { name: '12', uv: 43, pv: 45 },
-  { name: '13', uv: -74, pv: 90 },
-  { name: '14', uv: -71, pv: 130 },
-  { name: '15', uv: -117, pv: 11 },
-  { name: '16', uv: -186, pv: 107 },
-  { name: '17', uv: -16, pv: 926 },
-  { name: '18', uv: -125, pv: 653 },
-  { name: '19', uv: 222, pv: 366 },
-  { name: '20', uv: 372, pv: 486 },
-  { name: '21', uv: 182, pv: 512 },
-  { name: '22', uv: 164, pv: 302 },
-  { name: '23', uv: 316, pv: 425 },
-  { name: '24', uv: 131, pv: 467 },
-  { name: '25', uv: 291, pv: -190 },
-  { name: '26', uv: -47, pv: 194 },
-  { name: '27', uv: -415, pv: 371 },
-  { name: '28', uv: -182, pv: 376 },
-  { name: '29', uv: -93, pv: 295 },
-  { name: '30', uv: -99, pv: 322 },
-  { name: '31', uv: -52, pv: 246 },
-  { name: '32', uv: 154, pv: 33 },
-  { name: '33', uv: 205, pv: 354 },
-  { name: '34', uv: 70, pv: 258 },
-  { name: '35', uv: -25, pv: 359 },
-  { name: '36', uv: -59, pv: 192 },
-  { name: '37', uv: -63, pv: 464 },
-  { name: '38', uv: -91, pv: -2 },
-  { name: '39', uv: -66, pv: 154 },
-  { name: '40', uv: -50, pv: 186 },
+  { name: '1', Spending: 300, Income: 456 },
+  { name: '2', Spending: -145, Income: 230 },
+  { name: '3', Spending: -100, Income: 345 },
+  { name: '4', Spending: -8, Income: 450 },
+  { name: '5', Spending: 100, Income: 321 },
+  { name: '6', Spending: 9, Income: 235 },
+  { name: '7', Spending: 53, Income: 267 },
+  { name: '8', Spending: 252, Income: -378 },
+  { name: '9', Spending: 79, Income: -210 },
+  { name: '10', Spending: 294, Income: -23 },
+  { name: '12', Spending: 43, Income: 45 },
+  { name: '13', Spending: -74, Income: 90 },
+  { name: '14', Spending: -71, Income: 130 },
+  { name: '15', Spending: -117, Income: 11 },
+  { name: '16', Spending: -186, Income: 107 },
+  { name: '17', Spending: -16, Income: 926 },
+  { name: '18', Spending: -125, Income: 653 },
+  { name: '19', Spending: 222, Income: 366 },
+  { name: '20', Spending: 372, Income: 486 },
+  { name: '21', Spending: 182, Income: 512 },
+  { name: '22', Spending: 164, Income: 302 },
+  { name: '23', Spending: 316, Income: 425 },
+  { name: '24', Spending: 131, Income: 467 },
+  { name: '25', Spending: 291, Income: -190 },
+  { name: '26', Spending: -47, Income: 194 },
+  { name: '27', Spending: -415, Income: 371 },
+  { name: '28', Spending: -182, Income: 376 },
+  { name: '29', Spending: -93, Income: 295 },
+  { name: '30', Spending: -99, Income: 322 },
+  { name: '31', Spending: -52, Income: 246 },
 ];
 
 export default class LineChart extends PureComponent {
@@ -77,8 +68,8 @@ export default class LineChart extends PureComponent {
           <Legend verticalAlign="top" wrapperStyle={{ lineHeight: '40px' }} />
           <ReferenceLine y={0} stroke="#000" />
           <Brush dataKey="name" height={30} stroke="#8884d8" />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
+          <Bar dataKey="Income" fill="#8884d8" />
+          <Bar dataKey="Spending" fill="#82ca9d" />
         </BarChart>
       </ResponsiveContainer>
     );

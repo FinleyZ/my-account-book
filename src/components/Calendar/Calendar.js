@@ -7,7 +7,7 @@ import 'react-calendar/dist/Calendar.css';
 
 
 const Calendar = (props) => {
-	const a = props.date
+	// const a = props.date
   const [value, onChange] = useState(new Date())
 
 	const dateUpdate = (dateToUpdate ) => {

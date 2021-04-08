@@ -18,10 +18,10 @@ const ControlComponent = (props) => {
 
 
     return (
-        <Container>
+        <Container className="pt-4">
           <FinanceInfo monthlyData={props.monthlyData}/>
 
-          <Row>
+          <Row className="pt-4">
         		<ButtonGroup vertical>
                 <Budget monthlyData={props.monthlyData} titleName='Set Monthly Budget'btnColor='info' isBudget/>
                 <AddSpending  monthlyData={props.monthlyData} UpdateData={props.setData} titleName='Add Spending' btnColor='flat' isShown isSpending/>

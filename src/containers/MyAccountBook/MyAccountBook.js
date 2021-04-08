@@ -19,7 +19,7 @@ const MyAccountBook = () =>{
 		<Container fluid className="h-100" style={{overflow: "scroll"}}>
 			<Navigation/>
 			<Row className="h-100">
-				<Col className="bg-primary" lg="3" style={{minHeight: "500px"}}>
+				<Col lg="3" style={{minHeight: "500px"}}>
 				<ControlComponent monthlyData = {monthlyData} setData={setMonthlyData}/>
 				</Col>
 
